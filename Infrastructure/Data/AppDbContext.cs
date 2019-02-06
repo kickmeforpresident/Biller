@@ -13,6 +13,8 @@ namespace Infrastructure.Data
         { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceEntry> InvoiceEntries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
