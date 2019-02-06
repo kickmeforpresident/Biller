@@ -20,5 +20,7 @@ namespace Core.Entities
         [MaxLength(200)]
         public string Password { get; set; }
 
+        public ICollection<Invoice> Invoices { get; set; }
+
     }
 }

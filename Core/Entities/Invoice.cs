@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities
 {
@@ -14,6 +15,8 @@ namespace Core.Entities
         public int? UserId { get; set; }
 
         public User User { get; set; }
+
+        public ICollection<InvoiceEntry> InvoiceEntries { get; set; }
 
     }
 }

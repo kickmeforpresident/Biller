@@ -13,6 +13,7 @@ namespace Core
         {
             services.AddScoped<IUserManager, UserManager>();
             services.AddScoped<IAuthManager, AuthManager>();
+            services.AddScoped<IInvoiceManager, InvoiceManager>();
         }
     }
 }

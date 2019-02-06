@@ -12,6 +12,7 @@ namespace Infrastructure
         public static void AddInfrastructureModule(this IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
         }
     }
 }
