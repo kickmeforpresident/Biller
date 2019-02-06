@@ -11,8 +11,7 @@ using Models.Api.Request;
 namespace Web.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : Controller
     {
         private readonly IAuthManager _manager;
 
@@ -25,7 +24,8 @@ namespace Web.Controllers
         }
 
         // POST api/auth/login
-        [HttpPost, Route("login")]
+        [HttpPost]
+        [Route("login")]
         public IActionResult Login([FromBody]LoginRequestModel model)
         {
             if (model == null)

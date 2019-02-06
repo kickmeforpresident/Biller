@@ -12,6 +12,7 @@ namespace Core
         public static void AddCoreModule(this IServiceCollection services)
         {
             services.AddScoped<IUserManager, UserManager>();
+            services.AddScoped<IAuthManager, AuthManager>();
         }
     }
 }

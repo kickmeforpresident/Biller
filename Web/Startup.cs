@@ -62,19 +62,8 @@ namespace Web
 
             var connection = Configuration.GetConnectionString("DefaultConnection");
 
-            //services.AddDbContextPool<AppDbContext>( // replace "YourDbContext" with the class name of your DbContext
-            //    options => options.UseMySql(connection, // replace with your Connection String
-            //        mySqlOptions =>
-            //        {
-            //            mySqlOptions.ServerVersion(new Version(5, 7, 25), ServerType.MySql); // replace with your Server Version and Type
-            //        }
-            //));
-
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySql(connection));
-
-            //services.AddDbContext<AppDbContext>
-            //    (options => options.UseSqlServer(connection));
 
             services.AddCoreModule();
             services.AddInfrastructureModule();
