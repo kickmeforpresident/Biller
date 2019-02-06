@@ -1,5 +1,5 @@
-﻿using Core.Interfaces.UseCases;
-using Core.UseCases;
+﻿using Core.Interfaces.Managers;
+using Core.Managers;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

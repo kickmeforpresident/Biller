@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Interfaces.UseCases
+namespace Core.Interfaces.Managers
 {
     public interface IUserManager
     {

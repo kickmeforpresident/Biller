@@ -16,10 +16,6 @@ namespace Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Example how to add default data
-            //modelBuilder.Entity<User>().HasData(new User { Id = 1, Name = "First" });
-            //modelBuilder.Entity<User>().HasData(new User { Id = 2, Name = "Second" });
-            //modelBuilder.Entity<User>().HasData(new User { Id = 3, Name = "Third" });
         }
     }
 }

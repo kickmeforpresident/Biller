@@ -1,4 +1,4 @@
-﻿using Core.Interfaces.UseCases;
+﻿using Core.Interfaces.Managers;
 using Models.Api.Request;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Core.Interfaces.Repositories;
 
-namespace Core.UseCases
+namespace Core.Managers
 {
     public class AuthManager : IAuthManager
     {

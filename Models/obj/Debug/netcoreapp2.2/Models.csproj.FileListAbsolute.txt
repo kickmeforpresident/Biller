@@ -6,4 +6,3 @@ C:\Users\Istvan\Desktop\projects\dotnet\Biller\Models\obj\Debug\netcoreapp2.2\Mo
 C:\Users\Istvan\Desktop\projects\dotnet\Biller\Models\obj\Debug\netcoreapp2.2\Models.AssemblyInfo.cs
 C:\Users\Istvan\Desktop\projects\dotnet\Biller\Models\obj\Debug\netcoreapp2.2\Models.dll
 C:\Users\Istvan\Desktop\projects\dotnet\Biller\Models\obj\Debug\netcoreapp2.2\Models.pdb
-C:\Users\Istvan\Desktop\projects\dotnet\Biller\Models\obj\Debug\netcoreapp2.2\Models.csprojAssemblyReference.cache

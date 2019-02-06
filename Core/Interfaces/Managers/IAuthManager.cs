@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Interfaces.UseCases
+namespace Core.Interfaces.Managers
 {
     public interface IAuthManager
     {
