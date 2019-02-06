@@ -1,14 +1,18 @@
 using Core;
 using Infrastructure;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using System;
+using System.Text;
 
 namespace Web
 {
@@ -24,6 +28,30 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // TODO: Refactor this
+            string host = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Host").Value;
+            string protocol = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Protocol").Value;
+            string port = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Protocol").Value;
+            string jwtSecret = Configuration.GetSection("AppSettings").GetSection("Jwt").GetSection("JwtSecret").Value;
+
+            var appHostURL = $"{protocol}://{host}:{port}";
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+
+                    ValidIssuer = appHostURL,
+                    ValidAudience = appHostURL,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret))
+                };
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
@@ -33,8 +61,20 @@ namespace Web
             });
 
             var connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<AppDbContext>
-                (options => options.UseSqlServer(connection));
+
+            //services.AddDbContextPool<AppDbContext>( // replace "YourDbContext" with the class name of your DbContext
+            //    options => options.UseMySql(connection, // replace with your Connection String
+            //        mySqlOptions =>
+            //        {
+            //            mySqlOptions.ServerVersion(new Version(5, 7, 25), ServerType.MySql); // replace with your Server Version and Type
+            //        }
+            //));
+
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseMySql(connection));
+
+            //services.AddDbContext<AppDbContext>
+            //    (options => options.UseSqlServer(connection));
 
             services.AddCoreModule();
             services.AddInfrastructureModule();
@@ -54,9 +94,10 @@ namespace Web
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();           
 
             app.UseMvc(routes =>
             {

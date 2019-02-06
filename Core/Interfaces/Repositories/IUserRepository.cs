@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace Core.Interfaces.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IGetUserByUserName
     {
-        Task<User> GetById(int id);
-        Task<List<User>> List();
+        User GetById(int id);
+        List<User> GetAll();
         User Add(User entity);
         User Update(User entity);
         void Delete(User entity);
+    }
+
+    public interface IGetUserByUserName
+    {
+        User GetUserByUserName(string userName);
     }
 }

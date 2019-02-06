@@ -3,6 +3,7 @@ using Core.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,14 +32,14 @@ namespace Infrastructure.Data
             _dbContext.SaveChanges();
         }
 
-        public Task<User> GetById(int id)
+        public User GetById(int id)
         {
-            return _dbContext.Users.SingleOrDefaultAsync(user => user.Id == id);
+            return _dbContext.Users.SingleOrDefault(user => user.Id == id);
         }
 
-        public Task<List<User>> List()
+        public List<User> GetAll()
         {
-            return _dbContext.Users.ToListAsync();
+            return _dbContext.Users.ToList();
         }
 
         public User Update(User entity)
@@ -46,6 +47,11 @@ namespace Infrastructure.Data
             _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();
             return entity;
+        }
+
+        public User GetUserByUserName(string userName)
+        {
+            return _dbContext.Users.FirstOrDefault(u => u.UserName == userName);
         }
     }
 }

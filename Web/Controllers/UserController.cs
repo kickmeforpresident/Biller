@@ -20,9 +20,9 @@ namespace Web.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IEnumerable<User>> GetUsers()
+        public IEnumerable<User> GetUsers()
         {
-            return await _manager.GetAllUser();
+            return _manager.GetAllUser();
         }
     }
 }

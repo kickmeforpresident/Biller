@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Entities
+namespace Models.Api.Request
 {
-    public class User
+    public class LoginRequestModel
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
         public string UserName { get; set; }
-
         public string Password { get; set; }
-
     }
 }

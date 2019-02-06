@@ -1,13 +1,12 @@
-﻿using Core.Entities;
+﻿using Models.Api.Request;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Interfaces.UseCases
 {
-    public interface IUserManager
+    public interface IAuthManager
     {
-        List<User> GetAllUser();
+        string GetToken(LoginRequestModel model);
     }
 }

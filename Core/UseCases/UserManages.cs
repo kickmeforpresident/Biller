@@ -17,9 +17,9 @@ namespace Core.UseCases
             _userRepository = repository;
         }
 
-        public async Task<List<User>> GetAllUser()
+        public List<User> GetAllUser()
         {
-            return await _userRepository.List();
+            return _userRepository.GetAll();
         }
     }
 }
