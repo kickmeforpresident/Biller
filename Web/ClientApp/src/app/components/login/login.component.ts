@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,28 +10,35 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean;
-
-  // TODO make a service
-  constructor(public router: Router, public http: HttpClient) { }
+  
+  constructor(public router: Router, public service: AuthService) { }
 
   ngOnInit() {
   }
 
   login(form: NgForm) {
     let credentials = JSON.stringify(form.value);
-    console.log(credentials)
-    this.http.post("https://localhost:5001/api/auth/login", credentials, {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      })
-    }).subscribe(response => {
+
+    this.service.login(credentials).subscribe(response => {
       let token = (<any>response).token;
-      localStorage.setItem("jwt", token);
-      this.invalidLogin = false;
-      this.router.navigate(["/"]);
+      this.setJWTInLocalStorage(token);
+      this.switchInvalidLogin()
+      this.redirectAfterSuccessfulLogin();
     }, err => {
-      this.invalidLogin = true;
+      this.switchInvalidLogin()
     });
+  }
+
+  setJWTInLocalStorage(token) {
+    localStorage.setItem("jwt", token);
+  }
+
+  redirectAfterSuccessfulLogin() {
+    this.router.navigate(["/"]);
+  }
+
+  switchInvalidLogin() {
+    this.invalidLogin = this.invalidLogin === true ?  false : true;
   }
 
 }
