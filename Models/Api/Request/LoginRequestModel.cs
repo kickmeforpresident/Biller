@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Models.Api.Request
+﻿namespace Models.Api.Request
 {
     public class LoginRequestModel
     {

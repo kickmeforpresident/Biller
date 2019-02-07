@@ -1,10 +1,7 @@
 ﻿using Core.Entities;
-using Core.Interfaces.Repositories;
 using Core.Interfaces.Managers;
-using System;
+using Core.Interfaces.Repositories;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Managers
 {

@@ -1,13 +1,13 @@
 ﻿using Core.Interfaces.Managers;
+using Core.Interfaces.Repositories;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Models.Api.Request;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Core.Interfaces.Repositories;
+using System.Text;
 
 namespace Core.Managers
 {

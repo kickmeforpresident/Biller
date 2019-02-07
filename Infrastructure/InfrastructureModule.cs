@@ -1,9 +1,6 @@
 ﻿using Core.Interfaces.Repositories;
 using Infrastructure.Data;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure
 {

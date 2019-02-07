@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.Interfaces.Managers;
-using Microsoft.AspNetCore.Http;
+﻿using Core.Interfaces.Managers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Models.Api.Request;

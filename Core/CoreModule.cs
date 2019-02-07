@@ -1,9 +1,6 @@
 ﻿using Core.Interfaces.Managers;
 using Core.Managers;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core
 {

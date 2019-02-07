@@ -11,7 +11,7 @@ namespace Core.Entities
         public string InvoiceName { get; set; }
 
         public bool Open { get; set; }
-        
+
         public int? UserId { get; set; }
 
         public User User { get; set; }
