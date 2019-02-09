@@ -12,13 +12,13 @@
             <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
           </li>-->
           <li>
-            <a routerLink="/invoice-history">Invoice history</a>
+            <a mat-button routerLink="/invoice-history">Invoice history</a>
           </li>
           <li>
-            <a routerLink="/login">Login</a>
+            <a mat-button routerLink="/login">Login</a>
           </li>
           <li>
-            <button mat-raised-button color="primary" (click)="handleLogOut()">Logout</button>
+            <button mat-button  (click)="handleLogOut()">Logout</button>
           </li>
         </ul>
       </div>
