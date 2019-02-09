@@ -12,6 +12,8 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { LatestInvoiceComponent } from './components/latest-invoice/latest-invoice.component';
 import { EditLatestInvoiceComponent } from './components/edit-latest-invoice/edit-latest-invoice.component';
 import { InvoiceHistoryComponent } from './components/invoice-history/invoice-history.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { InvoiceHistoryComponent } from './components/invoice-history/invoice-hi
         whitelistedDomains: ['example.com'],
         blacklistedRoutes: ['example.com/examplebadroute/']
       }
-    })
+    }),
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

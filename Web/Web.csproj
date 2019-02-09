@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\guards\" />
+    <Folder Include="ClientApp\src\app\modules\" />
     <Folder Include="ClientApp\src\app\services\auth\" />
     <Folder Include="ClientApp\src\app\services\invoice\" />
   </ItemGroup>
