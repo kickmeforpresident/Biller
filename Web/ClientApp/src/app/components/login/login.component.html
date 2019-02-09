@@ -1,16 +1,41 @@
-<h1>Login</h1>
-
 <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
   <div class="container-fluid">
-    <h2 class="form-signin-heading">Login</h2>
-    <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
-    <br />
-    <label for="username" class="sr-only">Email address</label>
-    <input type="email" id="username" name="username" ngModel class="form-control" placeholder="User Name" required autofocus>
-    <br />
-    <label for="password" class="sr-only">Password</label>
-    <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password" required>
-    <br />
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <h1 class="form-signin-heading">Login</h1>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12">
+        <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <label for="username" class="sr-only">Email address</label>
+        <mat-form-field>
+          <input matInput type="email" id="username" name="username" ngModel class="" placeholder="User Name" required autofocus>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <label for="password" class="sr-only">Password</label>
+        <mat-form-field>
+          <input matInput type="password" id="password" name="password" ngModel class="" placeholder="Password" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <button mat-raised-button color="primary" class="btn-block" type="submit">Sign in</button>
+      </div>
+    </div>
+
   </div>
 </form>
