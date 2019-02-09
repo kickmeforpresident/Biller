@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Invoice } from 'src/app/models/invoice';
 
 
 @Injectable({
@@ -13,9 +14,9 @@ export class InvoiceService {
 
   constructor(private http: HttpClient) { }
 
-  public getLatestInvoiceWithEntries(): Observable<any> {
+  public getLatestInvoiceWithEntries(): Observable<Invoice> {
 
-    return this.http.get(this.getLatestURL);
+    return this.http.get<Invoice>(this.getLatestURL);
 
   }
 }
