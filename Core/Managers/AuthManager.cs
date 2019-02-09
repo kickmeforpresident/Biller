@@ -25,10 +25,10 @@ namespace Core.Managers
 
         public string GetToken(LoginRequestModel model)
         {
-            // Get user from repo
             var user = _userRepository.GetUserByUserName(model.UserName);
 
-            if (user != null)
+            // TODO: Check password
+            if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
                 // TODO: Refactor this
                 string host = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Host").Value;
