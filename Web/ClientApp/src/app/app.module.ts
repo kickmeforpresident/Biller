@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { LatestInvoiceComponent } from './components/latest-invoice/latest-invoice.component';
 import { EditLatestInvoiceComponent } from './components/edit-latest-invoice/edit-latest-invoice.component';
+import { InvoiceHistoryComponent } from './components/invoice-history/invoice-history.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EditLatestInvoiceComponent } from './components/edit-latest-invoice/edi
     NavMenuComponent,
     LoginComponent,
     LatestInvoiceComponent,
-    EditLatestInvoiceComponent
+    EditLatestInvoiceComponent,
+    InvoiceHistoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,6 +30,7 @@ import { EditLatestInvoiceComponent } from './components/edit-latest-invoice/edi
       { path: '', component: LatestInvoiceComponent, pathMatch: 'full' },
       { path: 'edit-invoice', component: EditLatestInvoiceComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
+      { path: 'invoice-history', component: InvoiceHistoryComponent },
     ]),
     JwtModule.forRoot({
       config: {
