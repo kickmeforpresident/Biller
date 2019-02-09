@@ -14,7 +14,7 @@ export class LatestInvoiceComponent implements OnInit {
   dataSource: InvoiceItem[];
   latestInvoice: Invoice;
   invoiceEntries: InvoiceItem[];
-  displayedColumns: string[] = ['id', 'creationDate', 'amount'];
+  displayedColumns: string[] = ['id', 'creationDate', 'amount', 'subject'];
 
   constructor(public service: InvoiceService) { }
 
