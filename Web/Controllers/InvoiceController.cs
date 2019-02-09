@@ -13,7 +13,7 @@ namespace Web.Controllers
             _manager = manager;
         }
 
-        // POST api/invoice/getall
+        // GET api/invoice/getall
         [HttpGet("[action]")]
         public JsonResult GetAll()
         {
@@ -22,6 +22,20 @@ namespace Web.Controllers
             if (invoicesWithEntries != null)
             {
                 return Json(invoicesWithEntries);
+            }
+
+            return null;
+        }
+
+        // GET api/invoice/getall
+        [HttpGet("[action]")]
+        public JsonResult GetLatest()
+        {
+            var invoiceWithEntries = _manager.GetLatesInvoiceWithEntires();
+
+            if (invoiceWithEntries != null)
+            {
+                return Json(invoiceWithEntries);
             }
 
             return null;

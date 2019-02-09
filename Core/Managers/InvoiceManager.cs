@@ -18,5 +18,10 @@ namespace Core.Managers
         {
             return _invoiceRepository.GetAllInvoiceWithEntries();
         }
+
+        public Invoice GetLatesInvoiceWithEntires()
+        {
+            return _invoiceRepository.GetLatestInvoiceWithEntries();
+        }
     }
 }

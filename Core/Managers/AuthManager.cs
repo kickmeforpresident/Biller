@@ -27,7 +27,6 @@ namespace Core.Managers
         {
             var user = _userRepository.GetUserByUserName(model.UserName);
 
-            // TODO: Check password
             if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
                 // TODO: Refactor this

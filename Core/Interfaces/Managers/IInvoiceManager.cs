@@ -6,5 +6,6 @@ namespace Core.Interfaces.Managers
     public interface IInvoiceManager
     {
         IEnumerable<Invoice> GetAllInvoiceWithEntries();
+        Invoice GetLatesInvoiceWithEntires();
     }
 }
