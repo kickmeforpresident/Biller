@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 
 @Component({
   selector: 'app-latest-invoice',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LatestInvoiceComponent implements OnInit {
 
-  constructor() { }
+  latestInvoice: any;
+
+  constructor(public service: InvoiceService) { }
 
   ngOnInit() {
+    this.service.getLatestInvoiceWithEntries().subscribe(invoice => this.latestInvoice = invoice);
   }
 
 }
