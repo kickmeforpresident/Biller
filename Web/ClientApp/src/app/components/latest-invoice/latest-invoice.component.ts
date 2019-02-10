@@ -16,7 +16,7 @@ export class LatestInvoiceComponent implements OnInit {
   dataSource: InvoiceItem[];
   latestInvoice: Invoice;
   invoiceEntries: InvoiceItem[];
-  displayedColumns: string[] = ['id', 'creationDate', 'amount', 'subject'];
+  displayedColumns: string[] = ['creationDate', 'amount', 'subject'];
   isLoggedIn: boolean;
 
   // New entry
