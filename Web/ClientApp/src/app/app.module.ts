@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -60,7 +60,8 @@ import { ResponseInterceptor } from './interceptors/response-interceptor';
     useClass: ResponseInterceptor,
     multi: true,
   },
-    AuthGuard
+    AuthGuard,
+    Title
   ],
   bootstrap: [AppComponent]
 })
