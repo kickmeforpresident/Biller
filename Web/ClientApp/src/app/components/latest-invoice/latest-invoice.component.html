@@ -1,6 +1,5 @@
 <h1 class="mt-5 text-center">Latest Invoice</h1>
-
-<div *ngIf="latestInvoice; else noLatestInvoice" class="mt-5">
+<div *ngIf="(latestInvoice | json) != '{}'; else noLatestInvoice" class="mt-5">
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -34,17 +33,27 @@
     </div>
 
     <div class="col-12 mt-5">
-      <button mat-raised-button color="warn">Close Invoice</button>
+      <a mat-raised-button color="warn">Close Invoice</a>
     </div>
   </div>
 
 </div>
 
 <ng-template #noLatestInvoice>
-  <div class="row mt-5">
+  <div *ngIf="isLoggedIn" class="row mt-5">
     <div class="col-12">
       <p>There isn't any open Invoice. Do you want to create one?</p>
-      <button mat-raised-button color="primary">Create Invoice</button>
+      <a mat-raised-button
+         color="primary"
+         routerLink="/create-invoice">
+        Create Invoice
+      </a>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoggedIn" class="row mt-5">
+    <div class="col-12">
+      <p class="text-center">Woo Hoo! There isn't any open Invoice!</p>
     </div>
   </div>
 </ng-template>

@@ -32,6 +32,7 @@ import { CreateInvoiceComponent } from './components/create-invoice/create-invoi
       { path: '', component: LatestInvoiceComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'invoice-history', component: InvoiceHistoryComponent },
+      { path: 'create-invoice', component: CreateInvoiceComponent, canActivate: [AuthGuard] },
     ]),
     JwtModule.forRoot({
       config: {

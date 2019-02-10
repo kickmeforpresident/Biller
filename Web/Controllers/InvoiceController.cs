@@ -38,7 +38,8 @@ namespace Web.Controllers
                 return Json(invoiceWithEntries);
             }
 
-            return null;
+            return Json(new EmptyResult());
+            //return null;
         }
     }
 }

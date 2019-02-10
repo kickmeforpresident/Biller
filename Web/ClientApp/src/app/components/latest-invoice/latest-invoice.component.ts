@@ -22,8 +22,10 @@ export class LatestInvoiceComponent implements OnInit {
 
   ngOnInit() {
     this.invoiceService.getLatestInvoiceWithEntries().subscribe(invoice => {
-      this.latestInvoice = invoice;
-      this.dataSource = this.latestInvoice.invoiceEntries;
+      if (invoice) {
+        this.latestInvoice = invoice;
+        this.dataSource = this.latestInvoice.invoiceEntries;
+      }
     });
 
     this.authService.getIsLoggedIn().subscribe(value => {
