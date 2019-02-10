@@ -8,7 +8,7 @@ namespace Core.Entities
         public int Id { get; set; }
 
         [Required]
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
 
         [Required]
         public DateTime CreationDate { get; set; }
