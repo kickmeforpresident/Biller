@@ -26,6 +26,6 @@ export class InvoiceService {
   }
 
   public createInvoice(invoice: Invoice) {
-    return this.http.post<Invoice>(this.createInvoiceURL, invoice, headers);
+    return this.http.post<Invoice>(this.createInvoiceURL, invoice, this.headers);
   }
 }

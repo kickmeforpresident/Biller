@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 
 @Component({
   selector: 'app-create-invoice',
@@ -8,24 +9,18 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateInvoiceComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: InvoiceService) { }
 
   ngOnInit() {
   }
 
   createInvoice(form: NgForm) {
     console.log(form.value)
-    //let credentials = JSON.stringify(form.value);
 
-    //this.service.login(credentials).subscribe(response => {
-    //  let token = (<any>response).token;
-    //  this.setJWTInLocalStorage(token);
-    //  this.switchInvalidLogin()
-    //  this.service.setIsLoggedIn();
-    //  this.redirectAfterSuccessfulLogin();
-    //}, err => {
-    //  this.switchInvalidLogin()
-    //});
+    this.service.createInvoice(form.value).subscribe(response => {
+      console.log(response);
+      // Redirect if success, show error message if failed
+    });
   }
 
 }
