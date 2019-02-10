@@ -63,7 +63,7 @@
     </div>
   </form>
 
-  <div *ngIf="isLoggedIn && latestInvoice" class="col-12 col-md-6 col-lg-4 mx-auto mt-5">
+  <div *ngIf="isLoggedIn && latestInvoice" class="col-12 col-md-6 col-lg-4 mx-auto my-5">
     <button mat-raised-button color="warn" class="btn-block" (click)="closeInvoice(latestInvoice.id)">Close Invoice</button>
   </div>
 
