@@ -6,6 +6,6 @@ export class Invoice {
   open: boolean;
   userId: number;
   user: any;
-  invoiceEntries: InvoiceItem[]
+  invoiceEntries: InvoiceItem[];
   
 }

@@ -19,7 +19,10 @@ export class LatestInvoiceComponent implements OnInit {
   constructor(public service: InvoiceService) { }
 
   ngOnInit() {
-    this.service.getLatestInvoiceWithEntries().subscribe(invoice => this.dataSource = invoice.invoiceEntries);
+    this.service.getLatestInvoiceWithEntries().subscribe(invoice => {
+      this.latestInvoice = invoice;
+      this.dataSource = this.latestInvoice.invoiceEntries;
+    });
   }
 
 }

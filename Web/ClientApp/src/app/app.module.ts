@@ -10,7 +10,6 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { LatestInvoiceComponent } from './components/latest-invoice/latest-invoice.component';
-import { EditLatestInvoiceComponent } from './components/edit-latest-invoice/edit-latest-invoice.component';
 import { InvoiceHistoryComponent } from './components/invoice-history/invoice-history.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
@@ -21,7 +20,6 @@ import { MaterialModule } from './modules/material/material.module';
     NavMenuComponent,
     LoginComponent,
     LatestInvoiceComponent,
-    EditLatestInvoiceComponent,
     InvoiceHistoryComponent
   ],
   imports: [
@@ -30,7 +28,6 @@ import { MaterialModule } from './modules/material/material.module';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: LatestInvoiceComponent, pathMatch: 'full' },
-      { path: 'edit-invoice', component: EditLatestInvoiceComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'invoice-history', component: InvoiceHistoryComponent },
     ]),
