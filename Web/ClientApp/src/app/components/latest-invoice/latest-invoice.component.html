@@ -33,14 +33,38 @@
     </div>
   </div>
 
-  <div *ngIf="isLoggedIn && latestInvoice && latestInvoice.invoiceEntries.length == 0" class="row mt-5">
-    <div class="col-12">
-      <p>TODO: Create new InvoiceEntry</p>
-    </div>
-  </div>
+  <form>
+    <div *ngIf="isLoggedIn && latestInvoice && latestInvoice.invoiceEntries.length == 0" class="row mt-5">
 
-  <div *ngIf="isLoggedIn && latestInvoice" class="col-12 mt-5">
-    <button mat-raised-button color="warn" (click)="closeInvoice(latestInvoice.id)">Close Invoice</button>
+      <div class="col-12 col-md-3">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [value]="today.value">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <mat-form-field>
+          <input matInput placeholder="Amount" type="number" [(ngModel)]="amount" name="amount">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <mat-form-field>
+          <input matInput placeholder="Amount" type="text" [(ngModel)]="subject" name="subject">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <button mat-raised-button color="primary" class="btn-block add-button" (click)="addInvoiceEntry()">Add</button>
+      </div>
+
+    </div>
+  </form>
+
+  <div *ngIf="isLoggedIn && latestInvoice" class="col-12 col-md-6 col-lg-4 mx-auto mt-5">
+    <button mat-raised-button color="warn" class="btn-block" (click)="closeInvoice(latestInvoice.id)">Close Invoice</button>
   </div>
 
 </div>

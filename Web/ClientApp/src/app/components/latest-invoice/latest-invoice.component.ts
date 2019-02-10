@@ -4,6 +4,7 @@ import { Invoice } from 'src/app/models/invoice';
 import { InvoiceItem } from 'src/app/models/invoiceItem';
 import { MatTableDataSource } from '@angular/material';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-latest-invoice',
@@ -17,6 +18,11 @@ export class LatestInvoiceComponent implements OnInit {
   invoiceEntries: InvoiceItem[];
   displayedColumns: string[] = ['id', 'creationDate', 'amount', 'subject'];
   isLoggedIn: boolean;
+
+  // New entry
+  today = new FormControl(new Date());
+  amount: number;
+  subject: string;
 
   constructor(public invoiceService: InvoiceService, public authService: AuthService) { }
 
