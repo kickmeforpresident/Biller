@@ -34,7 +34,7 @@ import { ResponseInterceptor } from './interceptors/response-interceptor';
     RouterModule.forRoot([
       { path: '', component: LatestInvoiceComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'invoice-history', component: InvoiceHistoryComponent },
+      { path: 'invoice-history', component: InvoiceHistoryComponent, canActivate: [AuthGuard] },
       { path: 'create-invoice', component: CreateInvoiceComponent, canActivate: [AuthGuard] },
     ]),
     JwtModule.forRoot({

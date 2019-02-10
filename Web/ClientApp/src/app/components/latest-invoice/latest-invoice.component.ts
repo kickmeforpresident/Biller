@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 import { Invoice } from 'src/app/models/invoice';
 import { InvoiceItem } from 'src/app/models/invoiceItem';
-import { MatTableDataSource, MatSnackBar } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormControl } from '@angular/forms';
 
@@ -24,10 +24,9 @@ export class LatestInvoiceComponent implements OnInit {
   amount: number;
   subject: string;
 
-  // Snackbar
   sumOfInvoiceEntries: number;
 
-  constructor(public invoiceService: InvoiceService, public authService: AuthService, private snackBar: MatSnackBar) { }
+  constructor(public invoiceService: InvoiceService, public authService: AuthService) { }
 
   ngOnInit() {
     this.invoiceService.getLatestInvoiceWithEntries().subscribe(invoice => {
