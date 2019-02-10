@@ -1,4 +1,6 @@
-<div *ngIf="latestInvoice; else noLatestInvoice">
+<h1 class="mt-5 text-center">Latest Invoice</h1>
+
+<div *ngIf="latestInvoice; else noLatestInvoice" class="mt-5">
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -26,16 +28,12 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <div *ngIf="latestInvoice && latestInvoice.invoiceEntries.length == 0">
-    <div class="row mt-5">
-      <div class="col-12">
-        <p>TODO: Create new InvoiceEntry</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-5">
+  <div *ngIf="isLoggedIn && latestInvoice && latestInvoice.invoiceEntries.length == 0" class="row mt-5">
     <div class="col-12">
+      <p>TODO: Create new InvoiceEntry</p>
+    </div>
+
+    <div class="col-12 mt-5">
       <button mat-raised-button color="warn">Close Invoice</button>
     </div>
   </div>

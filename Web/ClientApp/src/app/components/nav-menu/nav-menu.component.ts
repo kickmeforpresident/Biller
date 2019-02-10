@@ -18,8 +18,7 @@ export class NavMenuComponent implements OnInit {
   ngOnInit(): void {
     this.service.getIsLoggedIn().subscribe(value => {
       this.isLoggedIn = value;
-      console.log(value);
-      })
+    });
 }
 
 collapse() {
