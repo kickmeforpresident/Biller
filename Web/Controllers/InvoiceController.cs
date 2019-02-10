@@ -17,6 +17,7 @@ namespace Web.Controllers
 
         // GET api/invoice/getall
         [HttpGet("[action]")]
+        [Authorize]
         public JsonResult GetAll()
         {
             var invoicesWithEntries = _manager.GetAllInvoiceWithEntries();

@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.Interfaces.Managers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -16,6 +17,7 @@ namespace Web.Controllers
         }
 
         [HttpGet("[action]")]
+        [Authorize]
         public IEnumerable<User> GetUsers()
         {
             return _manager.GetAllUser();
