@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
@@ -14,6 +15,7 @@ import { InvoiceHistoryComponent } from './components/invoice-history/invoice-hi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { CreateInvoiceComponent } from './components/create-invoice/create-invoice.component';
+import { TokenInterceptor } from './interceptors/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,13 @@ import { CreateInvoiceComponent } from './components/create-invoice/create-invoi
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [AuthGuard],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  },
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

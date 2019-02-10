@@ -32,7 +32,7 @@ namespace Infrastructure.Data
 
         public Invoice CreateNewInvoice(string InvoiceName)
         {
-            var newInvoice = new Invoice { InvoiceName = InvoiceName };
+            var newInvoice = new Invoice { InvoiceName = InvoiceName, Open = true };
 
             _dbContext.Add(newInvoice);
 

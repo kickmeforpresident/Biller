@@ -40,18 +40,8 @@ export class AuthService {
     return this.http.post(this.loginURL, credentials, this.headers)
   }
 
-  //public isLoggedIn(): Observable<boolean> {
-  //  let isLoggedIn: boolean;
+  public getToken() {
+    return localStorage.getItem("jwt");
+  }
 
-  //  var token = localStorage.getItem("jwt");
-
-  //  if (token && !this.helper.isTokenExpired(token)) {
-  //    isLoggedIn = true;
-  //    return of(isLoggedIn);
-  //  }
-
-  //  isLoggedIn = false;
-  //  return of(isLoggedIn);
-
-  //}
 }
