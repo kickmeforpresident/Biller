@@ -47,4 +47,22 @@ export class LatestInvoiceComponent implements OnInit {
     });
   }
 
+  addInvoiceEntry() {
+    let invoiceEntry = {
+      Amount: this.amount,
+      CreationDate: this.today,
+      InvoiceId: this.latestInvoice.id,
+      Subject: this.subject
+    }
+
+    this.invoiceService.addInvoiceEntry(invoiceEntry).subscribe(response => {
+      if (response) {
+        console.log(response);
+      } else {
+        console.log("error");
+        // TODO: Show error message;
+      }
+    })
+  }
+
 }
