@@ -9,5 +9,6 @@ namespace Core.Interfaces.Managers
         IEnumerable<Invoice> GetAllInvoiceWithEntries();
         Invoice GetLatesInvoiceWithEntires();
         Invoice CreateNewInvoice(CreateInvoiceModel model);
+        Invoice CloseInvoice(CloseInvoiceModel model);
     }
 }

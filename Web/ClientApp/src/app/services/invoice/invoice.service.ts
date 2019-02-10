@@ -12,7 +12,7 @@ export class InvoiceService {
 
   private getLatestURL = environment.apiURL + "/invoice/getlatest";
   private createInvoiceURL = environment.apiURL + "/invoice/create";
-  private closeInvoiceURL = environment.apiURL + "/invoice/delete";
+  private closeInvoiceURL = environment.apiURL + "/invoice/close";
   private headers = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
@@ -30,6 +30,6 @@ export class InvoiceService {
   }
 
   public closeInvoice(id: number) {
-    return this.http.patch<Invoice>(this.closeInvoiceURL, id, this.headers);
+    return this.http.patch<Invoice>(this.closeInvoiceURL, { Id: id}, this.headers);
   }
 }

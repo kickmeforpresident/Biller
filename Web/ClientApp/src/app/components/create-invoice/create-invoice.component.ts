@@ -18,7 +18,6 @@ export class CreateInvoiceComponent implements OnInit {
 
   createInvoice(form: NgForm) {
     this.service.createInvoice(form.value).subscribe(response => {
-      console.log(response);
       if (response) {
         this.redirectAfterSuccessfulCreate();
       } else {

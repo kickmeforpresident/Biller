@@ -64,5 +64,25 @@ namespace Web.Controllers
 
             return StatusCode(500);
         }
+
+        // PATCH api/invoice/close
+        [HttpPatch("[action]")]
+        [Authorize]
+        public IActionResult Close([FromBody]CloseInvoiceModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest();
+            }
+
+            var closedInvoice = _manager.CloseInvoice(model);
+
+            if (closedInvoice != null)
+            {
+                return Ok(closedInvoice);
+            }
+
+            return StatusCode(500);
+        }
     }
 }

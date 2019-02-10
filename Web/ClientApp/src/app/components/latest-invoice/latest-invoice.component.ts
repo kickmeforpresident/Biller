@@ -34,8 +34,10 @@ export class LatestInvoiceComponent implements OnInit {
   }
 
   closeInvoice(id: number) {
-    this.invoiceService.closeInvoice(id).subscribe(value => {
-      console.log(value);
+    this.invoiceService.closeInvoice(id).subscribe(invoice => {
+      if (invoice) {
+        this.latestInvoice = new Invoice();
+      }
     });
   }
 

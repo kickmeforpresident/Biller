@@ -40,5 +40,21 @@ namespace Infrastructure.Data
 
             return newInvoice;
         }
+
+        public Invoice CloseInvoice(int id)
+        {
+            try
+            {
+                var invoice = _dbContext.Invoices.FirstOrDefault(i => i.Id == id);
+                invoice.Open = false;
+                _dbContext.SaveChanges();
+
+                return invoice;
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
+        }
     }
 }

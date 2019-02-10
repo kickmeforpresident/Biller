@@ -2,6 +2,7 @@
 using Core.Interfaces.Managers;
 using Core.Interfaces.Repositories;
 using Models.Api.Request;
+using System;
 using System.Collections.Generic;
 
 namespace Core.Managers
@@ -32,12 +33,27 @@ namespace Core.Managers
                 var newInvoice = _invoiceRepository.CreateNewInvoice(model.InvoiceName);
                 return newInvoice;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 // TODO: Log the exception
                 return null;
             }
 
+        }
+
+        public Invoice CloseInvoice(CloseInvoiceModel model)
+        {
+            try
+            {
+                var patchedInvoice = _invoiceRepository.CloseInvoice(model.Id);
+
+                return patchedInvoice != null ? patchedInvoice : throw new Exception("Resource not found in the repository.");
+            }
+            catch (Exception)
+            {
+                // TODO: Log the exception
+                return null;
+            }
         }
     }
 }
