@@ -13,6 +13,7 @@ import { LatestInvoiceComponent } from './components/latest-invoice/latest-invoi
 import { InvoiceHistoryComponent } from './components/invoice-history/invoice-history.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
+import { CreateInvoiceComponent } from './components/create-invoice/create-invoice.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MaterialModule } from './modules/material/material.module';
     NavMenuComponent,
     LoginComponent,
     LatestInvoiceComponent,
-    InvoiceHistoryComponent
+    InvoiceHistoryComponent,
+    CreateInvoiceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
