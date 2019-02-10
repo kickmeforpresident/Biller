@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 import { Invoice } from 'src/app/models/invoice';
 import { InvoiceItem } from 'src/app/models/invoiceItem';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormControl } from '@angular/forms';
 
@@ -24,19 +24,24 @@ export class LatestInvoiceComponent implements OnInit {
   amount: number;
   subject: string;
 
-  constructor(public invoiceService: InvoiceService, public authService: AuthService) { }
+  // Snackbar
+  sumOfInvoiceEntries: number;
+
+  constructor(public invoiceService: InvoiceService, public authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.invoiceService.getLatestInvoiceWithEntries().subscribe(invoice => {
       if (invoice) {
         this.latestInvoice = invoice;
         this.dataSource = this.latestInvoice.invoiceEntries;
+
+        this.calculateSumOfInvoiceEntries();
       }
     });
 
     this.authService.getIsLoggedIn().subscribe(value => {
       this.isLoggedIn = value;
-    });
+    });    
   }
 
   closeInvoice(id: number) {
@@ -60,11 +65,22 @@ export class LatestInvoiceComponent implements OnInit {
 
         // Add the new entry to the invoiceEntry list
         this.dataSource = [...this.latestInvoice.invoiceEntries, response];
+
+        // Recalculate the sum of the entries
+        this.sumOfInvoiceEntries += response.amount;
       } else {
         console.log("error");
         // TODO: Show error message;
       }
     })
+  }
+
+  calculateSumOfInvoiceEntries() {
+    let result = 0;
+
+    this.latestInvoice.invoiceEntries.forEach(i => result += i.amount);
+
+    this.sumOfInvoiceEntries = result;
   }
 
 }
