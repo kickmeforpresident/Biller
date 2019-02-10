@@ -1,5 +1,7 @@
 ﻿using Core.Interfaces.Managers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models.Api.Request;
 
 namespace Web.Controllers
 {
@@ -27,7 +29,7 @@ namespace Web.Controllers
             return null;
         }
 
-        // GET api/invoice/getall
+        // GET api/invoice/getlatest
         [HttpGet("[action]")]
         public JsonResult GetLatest()
         {
@@ -39,7 +41,28 @@ namespace Web.Controllers
             }
 
             return Json(new EmptyResult());
-            //return null;
+        }
+
+        // POST api/invoice/create
+        [HttpPost("[action]")]
+        [Authorize]
+        public IActionResult Create([FromBody]CreateInvoiceModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest();
+            }
+
+            var createdInvoice = _manager.CreateNewInvoice(model);
+
+            if (createdInvoice != null)
+            {
+                //return Created(nameof(GetById), createdInvoice);
+                // TODO: Make a getbyid action
+                return Created("test", createdInvoice);
+            }
+
+            return StatusCode(500);
         }
     }
 }

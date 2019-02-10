@@ -29,5 +29,16 @@ namespace Infrastructure.Data
 
             return invoice;
         }
+
+        public Invoice CreateNewInvoice(string InvoiceName)
+        {
+            var newInvoice = new Invoice { InvoiceName = InvoiceName };
+
+            _dbContext.Add(newInvoice);
+
+            _dbContext.SaveChanges();
+
+            return newInvoice;
+        }
     }
 }

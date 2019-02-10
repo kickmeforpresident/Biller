@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Models.Api.Request;
 using System.Collections.Generic;
 
 namespace Core.Interfaces.Managers
@@ -7,5 +8,6 @@ namespace Core.Interfaces.Managers
     {
         IEnumerable<Invoice> GetAllInvoiceWithEntries();
         Invoice GetLatesInvoiceWithEntires();
+        Invoice CreateNewInvoice(CreateInvoiceModel model);
     }
 }

@@ -7,5 +7,6 @@ namespace Core.Interfaces.Repositories
     {
         IEnumerable<Invoice> GetAllInvoiceWithEntries();
         Invoice GetLatestInvoiceWithEntries();
+        Invoice CreateNewInvoice(string InvoiceName);
     }
 }

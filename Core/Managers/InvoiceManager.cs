@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using Core.Interfaces.Managers;
 using Core.Interfaces.Repositories;
+using Models.Api.Request;
 using System.Collections.Generic;
 
 namespace Core.Managers
@@ -22,6 +23,21 @@ namespace Core.Managers
         public Invoice GetLatesInvoiceWithEntires()
         {
             return _invoiceRepository.GetLatestInvoiceWithEntries();
+        }
+
+        public Invoice CreateNewInvoice(CreateInvoiceModel model)
+        {
+            try
+            {
+                var newInvoice = _invoiceRepository.CreateNewInvoice(model.InvoiceName);
+                return newInvoice;
+            }
+            catch (System.Exception)
+            {
+                // TODO: Log the exception
+                return null;
+            }
+
         }
     }
 }
