@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { InvoiceService } from 'src/app/services/invoice/invoice.service';
+import { Router } from '@angular/router';
+import { Invoice } from 'src/app/models/invoice';
 
 @Component({
   selector: 'app-create-invoice',
@@ -9,18 +11,25 @@ import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 })
 export class CreateInvoiceComponent implements OnInit {
 
-  constructor(public service: InvoiceService) { }
+  constructor(public router: Router, public service: InvoiceService) { }
 
   ngOnInit() {
   }
 
   createInvoice(form: NgForm) {
-    console.log(form.value)
-
     this.service.createInvoice(form.value).subscribe(response => {
       console.log(response);
-      // Redirect if success, show error message if failed
+      if (response) {
+        this.redirectAfterSuccessfulCreate();
+      } else {
+        console.log("error")
+        // TODO: Show error message;
+      }
     });
+  }
+
+  redirectAfterSuccessfulCreate() {
+    this.router.navigate(["/"]);
   }
 
 }

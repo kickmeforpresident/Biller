@@ -27,6 +27,12 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
+  <div *ngIf="!isLoggedIn && latestInvoice && latestInvoice.invoiceEntries.length == 0" class="row mt-5">
+    <div class="col-12">
+      <p>Currenty, there isn't any Invoice entry. :)</p>
+    </div>
+  </div>
+
   <div *ngIf="isLoggedIn && latestInvoice && latestInvoice.invoiceEntries.length == 0" class="row mt-5">
     <div class="col-12">
       <p>TODO: Create new InvoiceEntry</p>

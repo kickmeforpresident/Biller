@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { CreateInvoiceComponent } from './components/create-invoice/create-invoice.component';
 import { TokenInterceptor } from './interceptors/token-interceptor';
+import { ResponseInterceptor } from './interceptors/response-interceptor';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,11 @@ import { TokenInterceptor } from './interceptors/token-interceptor';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ResponseInterceptor,
+    multi: true,
   },
     AuthGuard
   ],

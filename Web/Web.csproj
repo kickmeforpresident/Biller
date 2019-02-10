@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\interceptors\response-interceptor.ts" />
     <None Remove="ClientApp\src\app\interceptors\token-interceptor.ts" />
     <None Remove="ClientApp\src\app\models\invoice.ts" />
     <None Remove="ClientApp\src\app\models\invoiceItem.ts" />
@@ -46,6 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\interceptors\response-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\token-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\invoice.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\invoiceItem.ts" />
