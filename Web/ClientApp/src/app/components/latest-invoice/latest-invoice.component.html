@@ -10,7 +10,7 @@
 
     <ng-container matColumnDef="creationDate">
       <th mat-header-cell *matHeaderCellDef> Creation Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.creationDate}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.creationDate | date:"yyyy.MM.dd"}} </td>
     </ng-container>
 
     <ng-container matColumnDef="amount">
@@ -39,7 +39,7 @@
     </div>
 
     <div class="col-12 mt-5">
-      <a mat-raised-button color="warn">Close Invoice</a>
+      <button mat-raised-button color="warn">Close Invoice</button>
     </div>
   </div>
 
