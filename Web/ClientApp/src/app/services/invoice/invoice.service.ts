@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Invoice } from 'src/app/models/invoice';
+import { InvoiceItem } from 'src/app/models/invoiceItem';
 
 
 @Injectable({
@@ -34,7 +35,7 @@ export class InvoiceService {
     return this.http.patch<Invoice>(this.closeInvoiceURL, { Id: id}, this.headers);
   }
 
-  public addInvoiceEntry(invoiceEntry: object) {
-    return this.http.post(this.addInvoiceEntryURL, invoiceEntry, this.headers);
+  public addInvoiceEntry(invoiceEntry: InvoiceItem) {
+    return this.http.post<InvoiceItem>(this.addInvoiceEntryURL, invoiceEntry, this.headers);
   }
 }

@@ -34,7 +34,7 @@
   </div>
 
   <form>
-    <div *ngIf="isLoggedIn && latestInvoice && latestInvoice.invoiceEntries.length == 0" class="row mt-5">
+    <div *ngIf="isLoggedIn && latestInvoice" class="row mt-5">
 
       <div class="col-12 col-md-3">
         <mat-form-field>
@@ -46,13 +46,13 @@
 
       <div class="col-12 col-md-3">
         <mat-form-field>
-          <input matInput placeholder="Amount" type="number" [(ngModel)]="amount" name="amount">
+          <input matInput placeholder="Amount" type="number" [(ngModel)]="amount" name="amount" required>
         </mat-form-field>
       </div>
 
       <div class="col-12 col-md-3">
         <mat-form-field>
-          <input matInput placeholder="Amount" type="text" [(ngModel)]="subject" name="subject">
+          <input matInput placeholder="Subject" type="text" [(ngModel)]="subject" name="subject" required>
         </mat-form-field>
       </div>
 

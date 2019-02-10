@@ -48,16 +48,18 @@ export class LatestInvoiceComponent implements OnInit {
   }
 
   addInvoiceEntry() {
-    let invoiceEntry = {
-      Amount: this.amount,
-      CreationDate: this.today,
-      InvoiceId: this.latestInvoice.id,
-      Subject: this.subject
-    }
+    let invoiceEntry = new InvoiceItem(this.subject, this.amount, this.today.value, this.latestInvoice.id);
 
     this.invoiceService.addInvoiceEntry(invoiceEntry).subscribe(response => {
       if (response) {
-        console.log(response);
+
+        // Clear the input fields
+        this.amount = null;
+        this.today = new FormControl(new Date());
+        this.subject = "";
+
+        // Add the new entry to the invoiceEntry list
+        this.dataSource = [...this.latestInvoice.invoiceEntries, response];
       } else {
         console.log("error");
         // TODO: Show error message;

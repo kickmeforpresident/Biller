@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Models.Api.Request;
 using System.Collections.Generic;
 
 namespace Core.Interfaces.Repositories
@@ -9,5 +10,6 @@ namespace Core.Interfaces.Repositories
         Invoice GetLatestInvoiceWithEntries();
         Invoice CreateNewInvoice(string InvoiceName);
         Invoice CloseInvoice(int id);
+        InvoiceEntry CreateNewInvoiceEntry(AddInvoiceEntryModel model);
     }
 }

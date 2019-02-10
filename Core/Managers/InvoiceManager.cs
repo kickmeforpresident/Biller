@@ -55,5 +55,19 @@ namespace Core.Managers
                 return null;
             }
         }
+
+        public InvoiceEntry CreateInvoiceEntry(AddInvoiceEntryModel model)
+        {
+            try
+            {
+                var newInvoiceEntry = _invoiceRepository.CreateNewInvoiceEntry(model);
+                return newInvoiceEntry;
+            }
+            catch (Exception)
+            {
+                // TODO: Log the exception
+                return null;
+            }
+        }
     }
 }

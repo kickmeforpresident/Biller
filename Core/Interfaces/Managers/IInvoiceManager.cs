@@ -10,5 +10,6 @@ namespace Core.Interfaces.Managers
         Invoice GetLatesInvoiceWithEntires();
         Invoice CreateNewInvoice(CreateInvoiceModel model);
         Invoice CloseInvoice(CloseInvoiceModel model);
+        InvoiceEntry CreateInvoiceEntry(AddInvoiceEntryModel model);
     }
 }

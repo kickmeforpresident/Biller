@@ -84,5 +84,27 @@ namespace Web.Controllers
 
             return StatusCode(500);
         }
+
+        // POST api/invoice/addinvoiceentry
+        [HttpPost("[action]")]
+        [Authorize]
+        public IActionResult AddInvoiceEntry([FromBody]AddInvoiceEntryModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest();
+            }
+
+            var createdInvoiceEntry = _manager.CreateInvoiceEntry(model);
+
+            if (createdInvoiceEntry != null)
+            {
+                //return Created(nameof(GetById), createdInvoiceEntry);
+                // TODO: Make a getbyid action
+                return Created("test", createdInvoiceEntry);
+            }
+
+            return StatusCode(500);
+        }
     }
 }

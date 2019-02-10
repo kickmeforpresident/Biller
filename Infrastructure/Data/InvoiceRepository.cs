@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using Core.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Models.Api.Request;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -55,6 +56,23 @@ namespace Infrastructure.Data
             {
                 return null;
             }
+        }
+
+        public InvoiceEntry CreateNewInvoiceEntry(AddInvoiceEntryModel model)
+        {
+            var newInvoiceEntry = new InvoiceEntry
+            {
+                Amount = model.Amount,
+                CreationDate = model.CreationDate,
+                InvoiceId = model.InvoiceId,
+                Subject = model.Subject
+            };
+
+            _dbContext.Add(newInvoiceEntry);
+
+            _dbContext.SaveChanges();
+
+            return newInvoiceEntry;
         }
     }
 }
