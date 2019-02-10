@@ -37,10 +37,10 @@
     <div class="col-12">
       <p>TODO: Create new InvoiceEntry</p>
     </div>
+  </div>
 
-    <div class="col-12 mt-5">
-      <button mat-raised-button color="warn">Close Invoice</button>
-    </div>
+  <div *ngIf="isLoggedIn && latestInvoice" class="col-12 mt-5">
+    <button mat-raised-button color="warn" (click)="closeInvoice(latestInvoice.id)">Close Invoice</button>
   </div>
 
 </div>

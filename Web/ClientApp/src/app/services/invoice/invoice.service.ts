@@ -11,8 +11,8 @@ import { Invoice } from 'src/app/models/invoice';
 export class InvoiceService {
 
   private getLatestURL = environment.apiURL + "/invoice/getlatest";
-
   private createInvoiceURL = environment.apiURL + "/invoice/create";
+  private closeInvoiceURL = environment.apiURL + "/invoice/delete";
   private headers = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
@@ -27,5 +27,9 @@ export class InvoiceService {
 
   public createInvoice(invoice: Invoice) {
     return this.http.post<Invoice>(this.createInvoiceURL, invoice, this.headers);
+  }
+
+  public closeInvoice(id: number) {
+    return this.http.patch<Invoice>(this.closeInvoiceURL, id, this.headers);
   }
 }
