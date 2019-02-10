@@ -1,36 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent {
-  isExpanded = false;
+export class NavMenuComponent implements OnInit {
 
-  constructor(public router: Router) {
+  isExpanded: boolean = false;
+  isLoggedIn: boolean;
 
+  constructor(public router: Router, public service: AuthService) {
   }
 
-  collapse() {
-    this.isExpanded = false;
+  ngOnInit(): void {
+    this.service.getIsLoggedIn().subscribe(value => {
+      this.isLoggedIn = value;
+      console.log(value);
+      })
+}
+
+collapse() {
+  this.isExpanded = false;
+}
+
+toggle() {
+  this.isExpanded = !this.isExpanded;
+}
+
+handleLogOut() {
+  this.removeJWTFromLocalStorage();
+  this.service.setIsLoggedIn();
+  this.redirectToHome();
+}
+
+redirectToHome() {
+  this.router.navigate(["/"]);
+}
+
+removeJWTFromLocalStorage() {
+  localStorage.removeItem("jwt");
   }
 
-  toggle() {
-    this.isExpanded = !this.isExpanded;
-  }
-
-  handleLogOut() {
-    this.removeJWTFromLocalStorage();
-    this.redirectToHome();
-  }
-
-  redirectToHome() {
-    this.router.navigate(["/"]);
-  }
-
-  removeJWTFromLocalStorage() {
-    localStorage.removeItem("jwt");
-  }
 }

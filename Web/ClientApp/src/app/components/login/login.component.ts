@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
       let token = (<any>response).token;
       this.setJWTInLocalStorage(token);
       this.switchInvalidLogin()
+      this.service.setIsLoggedIn();
       this.redirectAfterSuccessfulLogin();
     }, err => {
       this.switchInvalidLogin()
