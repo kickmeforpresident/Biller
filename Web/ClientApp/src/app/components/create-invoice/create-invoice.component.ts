@@ -14,6 +14,7 @@ export class CreateInvoiceComponent implements OnInit {
   }
 
   createInvoice(form: NgForm) {
+    console.log(form.value)
     //let credentials = JSON.stringify(form.value);
 
     //this.service.login(credentials).subscribe(response => {
