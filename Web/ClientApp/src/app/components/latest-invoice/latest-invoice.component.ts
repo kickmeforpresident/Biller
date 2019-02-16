@@ -62,6 +62,7 @@ export class LatestInvoiceComponent implements OnInit {
   }
 
   addInvoiceEntry() {
+    console.log(this.today.value)
     let invoiceEntry = new InvoiceItem(this.subject, this.amount, this.today.value, this.latestInvoice.id);
 
     this.invoiceService.addInvoiceEntry(invoiceEntry).subscribe(response => {
@@ -72,11 +73,8 @@ export class LatestInvoiceComponent implements OnInit {
         this.today = new FormControl(new Date());
         this.subject = "";
 
-        // Add the new entry to the invoiceEntry list
-        this.dataSource = [...this.latestInvoice.invoiceEntries, response];
+        this.ngOnInit();
 
-        // Recalculate the sum of the entries
-        this.sumOfInvoiceEntries += response.amount;
       } else {
         console.log("error");
         // TODO: Show error message;

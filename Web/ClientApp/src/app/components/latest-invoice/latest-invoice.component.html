@@ -39,7 +39,7 @@
 
       <div class="col-12 col-md-3">
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [value]="today.value">
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="today.value" name="today">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
