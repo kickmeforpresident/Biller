@@ -10,6 +10,7 @@ import { InvoiceItem } from 'src/app/models/invoiceItem';
   providedIn: 'root'
 })
 export class InvoiceService {
+  public invoiceJustClosed: boolean = false;
 
   private getLatestURL = environment.apiURL + "/invoice/getlatest";
   private createInvoiceURL = environment.apiURL + "/invoice/create";

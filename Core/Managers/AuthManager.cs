@@ -35,7 +35,7 @@ namespace Core.Managers
                 string port = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Protocol").Value;
                 string jwtSecret = Configuration.GetSection("AppSettings").GetSection("Jwt").GetSection("JwtSecret").Value;
 
-                var appHostURL = $"{protocol}://{host}:{port}";
+                var appHostURL = $"{protocol}://{host}";
 
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

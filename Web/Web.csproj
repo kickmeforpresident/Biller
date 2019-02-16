@@ -10,11 +10,15 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <UserSecretsId>e9746aaa-0c42-4014-b01d-e793d26ae194</UserSecretsId>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
   </ItemGroup>
@@ -29,6 +33,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\interceptors\response-interceptor.ts" />
     <None Remove="ClientApp\src\app\interceptors\token-interceptor.ts" />
+    <None Remove="ClientApp\src\app\models\closeInvoiceDialogData.ts" />
     <None Remove="ClientApp\src\app\models\invoice.ts" />
     <None Remove="ClientApp\src\app\models\invoiceItem.ts" />
   </ItemGroup>
@@ -49,6 +54,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\response-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\token-interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\closeInvoiceDialogData.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\invoice.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\invoiceItem.ts" />
   </ItemGroup>

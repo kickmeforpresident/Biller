@@ -17,6 +17,11 @@ import { MaterialModule } from './modules/material/material.module';
 import { CreateInvoiceComponent } from './components/create-invoice/create-invoice.component';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { ResponseInterceptor } from './interceptors/response-interceptor';
+import { CloseInvoiceDialogComponent } from './components/close-invoice-dialog/close-invoice-dialog.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('jwt');
+}
 
 @NgModule({
   declarations: [
@@ -25,8 +30,10 @@ import { ResponseInterceptor } from './interceptors/response-interceptor';
     LoginComponent,
     LatestInvoiceComponent,
     InvoiceHistoryComponent,
-    CreateInvoiceComponent
+    CreateInvoiceComponent,
+    CloseInvoiceDialogComponent
   ],
+  entryComponents: [CloseInvoiceDialogComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
@@ -39,9 +46,7 @@ import { ResponseInterceptor } from './interceptors/response-interceptor';
     ]),
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('jwt');
-        },
+        tokenGetter: tokenGetter,
         // TODO: Refactor this
         whitelistedDomains: ['example.com'],
         blacklistedRoutes: ['example.com/examplebadroute/']

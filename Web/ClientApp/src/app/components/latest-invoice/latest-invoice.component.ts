@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 import { Invoice } from 'src/app/models/invoice';
 import { InvoiceItem } from 'src/app/models/invoiceItem';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormControl } from '@angular/forms';
+import { CloseInvoiceDialogComponent } from '../close-invoice-dialog/close-invoice-dialog.component';
 
 @Component({
   selector: 'app-latest-invoice',
@@ -26,7 +27,10 @@ export class LatestInvoiceComponent implements OnInit {
 
   sumOfInvoiceEntries: number;
 
-  constructor(public invoiceService: InvoiceService, public authService: AuthService) { }
+  constructor(
+    public invoiceService: InvoiceService,
+    public authService: AuthService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.invoiceService.getLatestInvoiceWithEntries().subscribe(invoice => {
@@ -43,10 +47,16 @@ export class LatestInvoiceComponent implements OnInit {
     });    
   }
 
-  closeInvoice(id: number) {
-    this.invoiceService.closeInvoice(id).subscribe(invoice => {
-      if (invoice) {
+  openCloseDialog(id: number) {
+    const dialogRef = this.dialog.open(CloseInvoiceDialogComponent, {
+      width: '50rem',
+      data: { invoiceId: id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (this.invoiceService.invoiceJustClosed) {
         this.latestInvoice = new Invoice();
+        this.invoiceService.invoiceJustClosed = false;
       }
     });
   }
@@ -77,9 +87,12 @@ export class LatestInvoiceComponent implements OnInit {
   calculateSumOfInvoiceEntries() {
     let result = 0;
 
-    this.latestInvoice.invoiceEntries.forEach(i => result += i.amount);
+    if (this.latestInvoice.invoiceEntries) {
+      this.latestInvoice.invoiceEntries.forEach(i => result += i.amount);
 
-    this.sumOfInvoiceEntries = result;
+      this.sumOfInvoiceEntries = result;
+    }
+
   }
 
 }

@@ -33,7 +33,7 @@ namespace Web
             string port = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Protocol").Value;
             string jwtSecret = Configuration.GetSection("AppSettings").GetSection("Jwt").GetSection("JwtSecret").Value;
 
-            var appHostURL = $"{protocol}://{host}:{port}";
+            var appHostURL = $"{protocol}://{host}";
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
