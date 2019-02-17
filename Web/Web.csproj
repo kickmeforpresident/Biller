@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\interceptors\LoadingInterceptor.ts" />
     <None Remove="ClientApp\src\app\interceptors\response-interceptor.ts" />
     <None Remove="ClientApp\src\app\interceptors\token-interceptor.ts" />
     <None Remove="ClientApp\src\app\models\closeInvoiceDialogData.ts" />
@@ -49,9 +50,11 @@
     <Folder Include="ClientApp\src\app\modules\" />
     <Folder Include="ClientApp\src\app\services\auth\" />
     <Folder Include="ClientApp\src\app\services\invoice\" />
+    <Folder Include="ClientApp\src\app\services\loading\" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\interceptors\loadingInterceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\response-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\token-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\closeInvoiceDialogData.ts" />

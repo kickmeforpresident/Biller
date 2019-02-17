@@ -18,6 +18,7 @@ import { CreateInvoiceComponent } from './components/create-invoice/create-invoi
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { ResponseInterceptor } from './interceptors/response-interceptor';
 import { CloseInvoiceDialogComponent } from './components/close-invoice-dialog/close-invoice-dialog.component';
+import { LoadingInterceptor } from './interceptors/loadingInterceptor';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -63,6 +64,11 @@ export function tokenGetter() {
   {
     provide: HTTP_INTERCEPTORS,
     useClass: ResponseInterceptor,
+    multi: true,
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
     multi: true,
   },
     AuthGuard,

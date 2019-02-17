@@ -1,6 +1,20 @@
 <body>
   <app-nav-menu></app-nav-menu>
+
   <div class="container">
     <router-outlet></router-outlet>
   </div>
+
+  <div *ngIf="showSpinner">
+    <div class="spinner-placeholder">
+    </div>
+    <div class="spinner">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <mat-spinner class="mx-auto"></mat-spinner>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>

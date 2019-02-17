@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule, MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -14,7 +14,8 @@ import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   exports:
     [
@@ -24,7 +25,8 @@ import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
       MatInputModule,
       MatTableModule,
       MatDatepickerModule,
-      MatDialogModule
+      MatDialogModule,
+      MatProgressSpinnerModule
     ],
 })
 export class MaterialModule { }
