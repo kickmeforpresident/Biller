@@ -3,7 +3,7 @@
     <div class="container">
       <a class="navbar-brand" [routerLink]='["/"]'>Biller</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded" (click)="toggle()">
+              [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
@@ -11,14 +11,26 @@
           <li *ngIf="isLoggedIn">
             <a mat-button routerLink="/invoice-history">Invoice history</a>
           </li>
-            <li *ngIf="!isLoggedIn; else loggedIn">
-              <a mat-button routerLink="/login">Login</a>
+          <li *ngIf="!isLoggedIn; else loggedIn">
+            <a mat-button routerLink="/login">
+              <span class="login-button">
+                <i class="material-icons">
+                  exit_to_app
+                </i>
+              </span>Login
+            </a>
+          </li>
+          <ng-template #loggedIn>
+            <li>
+              <button mat-button (click)="handleLogOut()">
+                <span class="logout-button">
+                  <i class="material-icons">
+                    power_settings_new
+                  </i>
+                </span>Logout
+              </button>
             </li>
-            <ng-template #loggedIn>
-              <li>
-                <button mat-button (click)="handleLogOut()">Logout</button>
-              </li>
-            </ng-template>          
+          </ng-template>
         </ul>
       </div>
     </div>

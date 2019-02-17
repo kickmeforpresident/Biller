@@ -16,3 +16,17 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+.login-button {
+  position: relative;
+  top: 7px;
+  right: 5px;
+  color: mediumseagreen;
+}
+
+.logout-button {
+  position: relative;
+  top: 7px;
+  right: 5px;
+  color: red;
+}
