@@ -71,7 +71,13 @@
   </form>
 
   <div *ngIf="latestInvoice" class="col-12 col-md-6 col-lg-4 mx-auto my-5">
-    <p class="text-center">Total: {{ sumOfInvoiceEntries }}</p>
+    <p class="text-center total-container">
+      <span class="warning-icon">
+        <i class="material-icons">
+          warning
+        </i>
+      </span>Total: {{ sumOfInvoiceEntries }}
+    </p>
   </div>
 
   <div *ngIf="isLoggedIn && latestInvoice" class="row">
