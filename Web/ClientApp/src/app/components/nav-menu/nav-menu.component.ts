@@ -8,8 +8,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
-
-  isExpanded: boolean = false;
   isLoggedIn: boolean;
 
   constructor(public router: Router, public service: AuthService) {
@@ -19,28 +17,20 @@ export class NavMenuComponent implements OnInit {
     this.service.getIsLoggedIn().subscribe(value => {
       this.isLoggedIn = value;
     });
-}
+  }
 
-collapse() {
-  this.isExpanded = false;
-}
+  handleLogOut() {
+    this.removeJWTFromLocalStorage();
+    this.service.setIsLoggedIn();
+    this.redirectToHome();
+  }
 
-toggle() {
-  this.isExpanded = !this.isExpanded;
-}
+  redirectToHome() {
+    this.router.navigate(["/"]);
+  }
 
-handleLogOut() {
-  this.removeJWTFromLocalStorage();
-  this.service.setIsLoggedIn();
-  this.redirectToHome();
-}
-
-redirectToHome() {
-  this.router.navigate(["/"]);
-}
-
-removeJWTFromLocalStorage() {
-  localStorage.removeItem("jwt");
+  removeJWTFromLocalStorage() {
+    localStorage.removeItem("jwt");
   }
 
 }
