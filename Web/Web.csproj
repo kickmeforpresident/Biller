@@ -37,6 +37,11 @@
     <None Remove="ClientApp\src\app\models\closeInvoiceDialogData.ts" />
     <None Remove="ClientApp\src\app\models\invoice.ts" />
     <None Remove="ClientApp\src\app\models\invoiceItem.ts" />
+    <None Remove="ClientApp\tsconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
