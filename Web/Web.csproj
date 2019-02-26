@@ -54,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\interceptors\loadingInterceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interceptors\LoadingInterceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\response-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\token-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\closeInvoiceDialogData.ts" />
