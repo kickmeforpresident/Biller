@@ -73,26 +73,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
-                    b.Property<int>("UserRoleId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserRoleId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Core.Entities.UserRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("RoleName")
-                        .HasMaxLength(200);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("Core.Entities.Invoice", b =>
@@ -107,14 +90,6 @@ namespace Infrastructure.Migrations
                     b.HasOne("Core.Entities.Invoice", "Invoice")
                         .WithMany("InvoiceEntries")
                         .HasForeignKey("InvoiceId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Core.Entities.User", b =>
-                {
-                    b.HasOne("Core.Entities.UserRole", "UserRole")
-                        .WithMany("Users")
-                        .HasForeignKey("UserRoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

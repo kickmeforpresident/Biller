@@ -11,6 +11,9 @@
 
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" id="navbarSupportedContent">
         <ul class="navbar-nav flex-grow">
+          <li data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a mat-button routerLink="/salary-calculator">Salary Calculator</a>
+          </li>
           <li *ngIf="isLoggedIn" data-toggle="collapse" data-target=".navbar-collapse.show">
             <a mat-button routerLink="/invoice-history">Invoice history</a>
           </li>

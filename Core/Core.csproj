@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SharedKernel\" />
+    <Compile Remove="SharedKernel\**" />
+    <EmbeddedResource Remove="SharedKernel\**" />
+    <None Remove="SharedKernel\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,10 +18,6 @@ namespace Core.Entities
         [MaxLength(200)]
         public string Password { get; set; }
 
-        public int UserRoleId { get; set; }
-
-        public UserRole UserRole { get; set; }
-
         public ICollection<Invoice> Invoices { get; set; }
 
     }
