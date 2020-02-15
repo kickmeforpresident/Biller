@@ -3,7 +3,7 @@ FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base
 RUN apt-get update -qq && \
     apt-get install -qq -y wget && \
     apt-get install -qq -y gnupg2 && \
-    wget -qO- https://deb.nodesource.com/setup_8.x | bash - && \
+    wget -qO- https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -qq -y build-essential nodejs && \
     apt-get install -qq -y nginx
 
@@ -16,7 +16,7 @@ FROM microsoft/dotnet:2.2-sdk AS build
 RUN apt-get update -qq && \
     apt-get install -qq -y wget && \
     apt-get install -qq -y gnupg2 && \
-    wget -qO- https://deb.nodesource.com/setup_8.x | bash - && \
+    wget -qO- https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -qq -y build-essential nodejs && \
     apt-get install -qq -y nginx
 
