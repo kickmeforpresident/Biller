@@ -14,9 +14,6 @@
           <li data-toggle="collapse" data-target=".navbar-collapse.show">
             <a mat-button routerLink="/salary-calculator">Salary Calculator</a>
           </li>
-          <li *ngIf="isLoggedIn" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a mat-button routerLink="/invoice-history">Invoice history</a>
-          </li>
           <li *ngIf="!isLoggedIn; else loggedIn" data-toggle="collapse" data-target=".navbar-collapse.show">
             <a mat-button routerLink="/login">
               <span class="login-button">
