@@ -3,6 +3,16 @@ mono: none
 sudo: required
 dist: xenial
 dotnet: 2.2
+services:
+  - docker
+
+before_install:
+  # install heroku CLI
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+  # login to heroku
+
 script:
-  - dotnet restore Biller.sln
-  - dotnet build Biller.sln
+  - docker-compose build
+  # - docker tag web registry.heroku.com/$HEROKU_APP_NAME/web
+  # - docker push registry.heroku.com/$HEROKU_APP_NAME/web
+  # - heroku container:release web -a $HEROKU_APP_NAME
