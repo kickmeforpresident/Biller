@@ -18,15 +18,17 @@ namespace Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env, IConfiguration configuration)
         {
             Configuration = configuration;
+            CurrentEnvironment = env;
         }
 
+        private IHostingEnvironment CurrentEnvironment { get; set; }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services, IHostingEnvironment env)
+        public void ConfigureServices(IServiceCollection services)
         {
             // TODO: Refactor this
             string host = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Host").Value;
@@ -65,7 +67,7 @@ namespace Web
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
 
-            var connection = env.IsProduction() 
+            var connection = CurrentEnvironment.IsProduction() 
                 ? Environment.GetEnvironmentVariable("ASPNETCORE_CONNECTION") 
                 : Configuration.GetConnectionString("DefaultConnection");
 
