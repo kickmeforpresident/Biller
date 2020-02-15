@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using System;
 using System.Text;
 
 namespace Web
@@ -25,7 +26,7 @@ namespace Web
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services, IHostingEnvironment env)
         {
             // TODO: Refactor this
             string host = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Host").Value;
@@ -64,7 +65,9 @@ namespace Web
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
 
-            var connection = Configuration.GetConnectionString("DefaultConnection");
+            var connection = env.IsProduction() 
+                ? Environment.GetEnvironmentVariable("ASPNETCORE_CONNECTION") 
+                : Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySql(connection));
