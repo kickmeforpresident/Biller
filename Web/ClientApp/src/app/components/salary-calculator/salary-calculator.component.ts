@@ -10,6 +10,7 @@ export class SalaryCalculatorComponent implements OnInit {
   minutesWorked: number;
   hourlyRate: number;
   total: number;
+  invalidInputs: boolean;
 
   constructor() { }
 
@@ -17,12 +18,21 @@ export class SalaryCalculatorComponent implements OnInit {
   }
 
   public calculateTotal(): void {
+    if (this.hoursWorked < 0 || this.minutesWorked < 0 || this.hourlyRate < 0) {
+      this.invalidInputs = true;
+      return;
+    }
+
     let decimalMinutes: number;
     if (this.minutesWorked) {
       decimalMinutes = this.minutesWorked / 60;
     }
 
-    this.total = (this.hoursWorked + decimalMinutes) * this.hourlyRate;
+    if (decimalMinutes !== undefined) {
+      this.total = (this.hoursWorked + decimalMinutes) * this.hourlyRate;
+    } else {
+      this.total = this.hoursWorked * this.hourlyRate;
+    }
   }
 
 }
