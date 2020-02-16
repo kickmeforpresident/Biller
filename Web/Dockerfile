@@ -44,4 +44,6 @@ RUN dotnet publish Web.csproj -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
+ARG ASPNETCORE_CONNECTION
+ENV ASPNETCORE_CONNECTION=${ASPNETCORE_CONNECTION}
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet Web.dll

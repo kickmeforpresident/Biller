@@ -6,3 +6,5 @@ services:
     build:
       context: .
       dockerfile: Web/Dockerfile
+      args:
+        ASPNETCORE_CONNECTION: "${ASPNETCORE_CONNECTION}"
