@@ -6,10 +6,6 @@ branches:
   only:
     - master
 
-env:
-  global:
-    - ASPNETCORE_CONNECTION=$ASPNETCORE_CONNECTION
-
 services:
   - docker
 
@@ -18,7 +14,7 @@ before_install:
   - curl https://cli-assets.heroku.com/install.sh | sh
 
 script:
-  - sudo docker-compose build
+  - sudo docker-compose build --build-arg ASPNETCORE_CONNECTION=$ASPNETCORE_CONNECTION
   - sudo docker login --username $HEROKU_EMAIL --password $HEROKU_AUTH_TOKEN registry.heroku.com
   - sudo docker tag web registry.heroku.com/$HEROKU_APP_NAME/web
   - sudo docker push registry.heroku.com/$HEROKU_APP_NAME/web
