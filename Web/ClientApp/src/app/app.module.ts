@@ -8,18 +8,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
-import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth-guard.service';
-import { LatestInvoiceComponent } from './components/latest-invoice/latest-invoice.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
-import { CreateInvoiceComponent } from './components/create-invoice/create-invoice.component';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { ResponseInterceptor } from './interceptors/response-interceptor';
-import { CloseInvoiceDialogComponent } from './components/close-invoice-dialog/close-invoice-dialog.component';
 import { LoadingInterceptor } from './interceptors/LoadingInterceptor';
 import { ROUTES } from './app.routes';
-import { SalaryCalculatorComponent } from './components/salary-calculator/salary-calculator.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -28,28 +23,20 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    LoginComponent,
-    LatestInvoiceComponent,
-    CreateInvoiceComponent,
-    CloseInvoiceDialogComponent,
-    SalaryCalculatorComponent
+    NavMenuComponent
   ],
-  entryComponents: [CloseInvoiceDialogComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(ROUTES, {
-      // useHash: true,
       preloadingStrategy: PreloadAllModules
     }),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        // TODO: Refactor this
-        whitelistedDomains: ['example.com'],
-        blacklistedRoutes: ['example.com/examplebadroute/']
+        whitelistedDomains: [''],
+        blacklistedRoutes: ['']
       }
     }),
     BrowserAnimationsModule,

@@ -1,0 +1,20 @@
+<h1 class="mt-5 text-center">Create Invoice</h1>
+
+<form class="form-create-invoice" #createInvoiceForm="ngForm" (ngSubmit)="createInvoice(createInvoiceForm)">
+  <div class="container-fluid">
+    <div class="row mt-5">
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <label for="username" class="sr-only">Invoice Name</label>
+        <mat-form-field>
+          <input matInput type="text" id="invoiceName" name="invoiceName" ngModel class="" placeholder="Invoice Name" required autofocus>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <button mat-raised-button color="primary" class="btn-block" type="submit" [disabled]="!createInvoiceForm.valid">Create</button>
+      </div>
+    </div>
+  </div>
+</form>

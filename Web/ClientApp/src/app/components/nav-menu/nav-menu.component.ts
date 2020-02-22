@@ -26,11 +26,11 @@ export class NavMenuComponent implements OnInit {
   }
 
   redirectToHome() {
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
   }
 
   removeJWTFromLocalStorage() {
-    localStorage.removeItem("jwt");
+    localStorage.removeItem('jwt');
   }
 
 }
