@@ -1,8 +1,10 @@
 ﻿using Core.Interfaces.Managers;
 using Core.Interfaces.Repositories;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Models.Api.Request;
+using Models.Settings;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -14,13 +16,15 @@ namespace Core.Managers
     public class AuthManager : IAuthManager
     {
         private readonly IUserRepository _userRepository;
+        private readonly Settings _settings;
 
         public IConfiguration Configuration { get; }
 
-        public AuthManager(IConfiguration configuration, IUserRepository repository)
+        public AuthManager(IConfiguration configuration, IUserRepository repository, IOptions<Settings> settings)
         {
             Configuration = configuration;
             _userRepository = repository;
+            _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
         }
 
         public string GetToken(LoginRequestModel model)
@@ -29,15 +33,8 @@ namespace Core.Managers
 
             if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
-                // TODO: Refactor this
-                string host = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Host").Value;
-                string protocol = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Protocol").Value;
-                string port = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Protocol").Value;
-                string jwtSecret = Configuration.GetSection("AppSettings").GetSection("Jwt").GetSection("JwtSecret").Value;
-
-                var appHostURL = $"{protocol}://{host}";
-
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
+                var appHostURL = $"{_settings.AppSettings.Hosting.Protocol}://{_settings.AppSettings.Hosting.Host}";
+                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.AppSettings.Jwt.JwtSecret));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
                 var tokenOptions = new JwtSecurityToken(

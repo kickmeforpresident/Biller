@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
 using System.Text;
+using Models.Settings;
 
 namespace Web
 {
@@ -30,7 +31,8 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // TODO: Refactor this
+            services.Configure<Settings>(Configuration);
+
             string host = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Host").Value;
             string protocol = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Protocol").Value;
             string port = Configuration.GetSection("AppSettings").GetSection("Hosting").GetSection("Protocol").Value;
